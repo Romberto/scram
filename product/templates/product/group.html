@@ -1,0 +1,61 @@
+{% extends 'product/base.html' %}
+{% load static %}
+{% block css %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'product/css/normilize.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/products.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/lk_segun.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/lk_total.css'%}">
+{% endblock %}
+
+{% block title%}{{ group.group_title}}{% endblock%}
+
+{% block content%}
+
+            <div class="container">
+                <div class="add__form_container">
+                    <div class="add__form_wrapper">
+                        <form action="#" method="POST" class="add__form">
+                            <div class="add__form_close">
+                                <span></span>
+                                <span></span>
+                            </div>
+                            {% csrf_token %}
+                            <div class="add__form_block">
+                                <label for="article_id" class="item__lable">артикул</label>
+                                {{ add_form.article }}
+                            </div>
+                            <div class="add__form_block">
+                                <label for="product_name_id" class="item__lable">описание</label>
+                                {{ add_form.product_name }}
+                            </div>
+                            <input type="submit" name="add_form_btn">
+                        </form>
+                    </div>
+                <div class="main__menu">
+                    <ul class="menu__list menu__list_row">
+                        <li class="menu__item"><a href="{% url 'cabinet'%}" class="menu__link">кабинет</a></li>
+                        <li class="menu__item"><a href="{% url 'product'%}" class="menu__link">документы</a></li>
+                        <li class="menu__item"><a href="#" class="menu__link js_add_product">добавить продукцию</a></li>
+                    </ul>
+                </div>
+            <h3 class="form_title">{{group.group_title}} </h3>
+            <div class="product">
+                <table border="2" >
+                    {% for item in query %}
+                    <tr>
+                        <td><a href="{% url 'product_item' item.article %}">{{ item.article}}</a></td>
+                        <td>{{ item.product_name}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            </div>
+
+
+
+<script type="text/javascript" src="{% static 'product/js/product.js' %}"></script>
+{% endblock %}
+
+

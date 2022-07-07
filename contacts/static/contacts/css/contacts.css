@@ -1,0 +1,33 @@
+.menu__header{
+    background-color: #4d315a;
+    }
+
+.row{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 50px;
+    padding-left: 5px;
+    margin-bottom: 15px;
+     }
+
+.menu__item{
+    margin-right: 15px;
+}
+.menu__link{
+    color: #fae207;
+    border: solid 2px #fae207;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.title__contact{
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4d315a;
+    }
+td{
+    padding: 5px;
+    vertical-align: top;
+    }

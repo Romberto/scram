@@ -1,0 +1,56 @@
+{% extends 'product/base.html' %}
+{% load static %}
+{% block css%}
+    <link rel="stylesheet" href="{% static 'product/css/normilize.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/lk_segun.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/lk_total.css'%}">
+
+{% endblock %}
+{% block title%}{% endblock%}
+
+{% block content%}
+    <main class="main">
+        <div class="container">
+            <div class="main__inner">
+                <div class="main__menu">
+                    <ul class="menu__list">
+                        <li class="menu__item"><a href="#" class="menu__link">главная</a></li>
+                        <li class="menu__item"><a href="{% url 'contacts'%}" class="menu__link">клиенты</a></li>
+                        <li class="menu__item"><a href="traders.html" class="menu__link">сделки</a></li>
+                        <li class="menu__item"><a href="tasks.html" class="menu__link">задачи</a></li>
+                        <li class="menu__item"><a href="{% url 'product'%}" class="menu__link">документы</a></li>
+
+                    </ul>
+                </div>
+                <div class="main_table">
+                    <ul class="table_list">
+                        <li class="table_item">
+                            <div class="item__block">
+                                <p class="item__title">задачи</p>
+                                <a href="#" class="item__row">позвонить в РусАгро</a>
+                                <a href="#" class="item__row">отгрузка семечки</a>
+                                <a href="#" class="item__row">отобраться в Безымянке</a>
+                            </div>
+                        </li>
+                        <li class="table_item">
+                            <div class="item__block">
+                                <p class="item__title">сделки в работе</p>
+                                <a href="#" class="item__row">семечка Воронеж</a>
+                                <a href="#" class="item__row">чечевица Орел</a>
+                            </div>
+                        </li>
+                        <li class="table_item">
+                            <div class="item__block">
+                                <p class="item__title">текущие сделки</p>
+                                <a href="#" class="item__row">Шрот Энгельс</a>
+                                <a href="#" class="item__row">семечка Саратов "АгроХолдинг"</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+{% endblock%}

@@ -1,0 +1,56 @@
+{% extends 'product/base.html' %}
+{% load static %}
+{% block css%}
+<link rel="stylesheet" href="{% static 'product/css/normilize.css'%}">
+<link rel="stylesheet" href="{% static 'product/css/products.css'%}">
+<link rel="stylesheet" href="{% static 'product/css/lk_total.css'%}">
+<link rel="stylesheet" href="{% static 'product/css/traid.css'%}">
+<link rel="stylesheet" href="{% static './contacts/css/contacts.css'%}">
+
+{% endblock %}
+
+{% block title %}контакты{% endblock %}
+{% block content %}
+<main>
+    <div class="container">
+        <div class="menu__header">
+            <ul class="menu__list row">
+                <li class="menu__item"><a href="{% url 'cabinet' %}" class="menu__link">кабинет</a></li>
+                <li class="menu__item"><a href="{% url 'contacts'%}" class="menu__link">задачи</a></li>
+                <li class="menu__item"><a href="traders.html" class="menu__link">сделки</a></li>
+                <li class="menu__item"><a href="{% url 'product'%}" class="menu__link">документы</a></li>
+                <li class="menu__item"><a href="tasks.html" class="menu__link">поиск</a></li>
+                <li class="menu__item"><a href="#" class="menu__link js_new_client">новый клиент</a></li>
+            </ul>
+        </div>
+        <h3 class="title__contact">клиенты</h3>
+        <div class="contact__table">
+            <table border="1">
+                <tr>
+                    <td bgcolor="#D3EDF6" align="center">наименоваие</td>
+                    <td bgcolor="#D3EDF6" align="center">телефон</td>
+                    <td bgcolor="#D3EDF6" align="center">почта</td>
+                    <td bgcolor="#D3EDF6" align="center">юр. адрес</td>
+                    <td bgcolor="#D3EDF6" align="center">фак. адрес</td>
+                    <td bgcolor="#D3EDF6" align="center">контактное лицо</td>
+                    <td bgcolor="#D3EDF6" align="center">комментарий</td>
+                </tr>
+                {% for client in clients %}
+                <tr>
+                    <td>{{client.name}}</td>
+                    <td><a href="tel:{{client.phone}}">{{client.phone}}</a></td>
+                    <td><a href="mailto:{{client.mail}}">{{client.mail}}</a></td>
+                    <td>{{client.ur_adress}}</td>
+                    <td>{{client.fac_adress}}</td>
+                    <td>{{client.contact_face}}</td>
+                    <td>{{client.comment}}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</main>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'contacts/js/contacts.js'%}"></script>
+{%endblock%}

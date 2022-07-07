@@ -1,0 +1,101 @@
+
+
+{% extends 'product/base.html'%}
+
+{% load static %}
+{% block css%}
+    <link rel="stylesheet" href="{% static 'product/css/normilize.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/products.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/lk_segun.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/lk_total.css'%}">
+{% endblock %}
+{% block title%}{{item.article}}{% endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="main__menu">
+        <ul class="menu__list menu__list_row">
+            <li class="menu__item"><a href="{%url 'cabinet'%}" class="menu__link">кабинет</a></li>
+            <li class="menu__item"><a href="{% url 'group' item.product_group.id %}" class="menu__link">назад</a></li>
+        </ul>
+    </div>
+    <h3 class="form_title">{{ item.product_name }}</h3>
+    <div class="product__item">
+        <div class="item_block">
+            <p class="item__doc_title">декларация ТС :</p>
+            <a href="#" class="item__doc_link js_item__doc_link">просмотр</a>
+            <a href="#" class="item__doc_link js_doc_replacement">заменить</a>
+            <div class="item__doc_vision">
+                <div class="item__doc_inner">
+                    <embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://example.com/the.pdf"
+                           class="item__doc_img">
+                </div>
+            </div>
+            <form class="item__form js_item__form" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <label class="item__lable" for="id_declination">декларация ТС</label>
+                {{dec_form.declination}}
+                <input type="submit" name="declination">
+            </form>
+        </div>
+        <div class="item_block">
+            <p class="item__doc_title">протокол :</p>
+            <a href="#" class="item__doc_link js_item__doc_link">просмотр</a>
+            <a href="#" class="item__doc_link js_doc_replacement">заменить</a>
+            <div class="item__doc_vision">
+                <div class="item__doc_inner">
+                    <embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://example.com/the.pdf"
+                           class="item__doc_img">
+                </div>
+            </div>
+            <form class="item__form js_item__form" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <label class="item__lable" for="id_protocol">протокол</label>
+                {{pro_form.protocol}}
+                <input type="submit" name="protocol">
+            </form>
+        </div>
+        <div class="item_block">
+            <p class="item__doc_title">спецификация:</p>
+            <a href="#" class="item__doc_link js_item__doc_link">просмотр</a>
+            <a href="#" class="item__doc_link js_doc_replacement">заменить</a>
+            <div class="item__doc_vision">
+                <div class="item__doc_inner">
+                    <embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://example.com/the.pdf"
+                           class="item__doc_img">
+                </div>
+            </div>
+            <form class="item__form js_item__form" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <label class="item__lable" for="id_specification">спецификация</label>
+                {{spe_form.specification}}
+                <input type="submit" name="specification">
+            </form>
+        </div>
+        <div class="item_block">
+            <p class="item__doc_title">удостоверение качества и безопастности:</p>
+            <a href="#" class="item__doc_link js_item__doc_link">просмотр</a>
+            <a href="#" class="item__doc_link js_doc_replacement">заменить</a>
+            <div class="item__doc_vision">
+                <div class="item__doc_inner">
+                    <embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://example.com/the.pdf"
+                           class="item__doc_img">
+                </div>
+            </div>
+            <form class="item__form js_item__form" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <label class="item__lable" for="id_quality_certificate">удостоверение качества и безопастности</label>
+                {{qua_form.quality_certificate}}
+                <input type="submit" name="quality_certificate">
+            </form>
+        </div>
+        <div class="product__post">
+            <a href="#" class="post__link">отправить пакет документов</a>
+        </div>
+    </div>
+
+
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'product/js/product.js' %}"></script>
+{% endblock %}

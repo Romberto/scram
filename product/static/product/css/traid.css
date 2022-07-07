@@ -1,0 +1,164 @@
+
+.traid__header-title{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.traid__info-client{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+.traid__info-client,
+.traid__info-traid,
+.traid__additional{
+    margin-bottom: 30px;
+    border:solid 2px #895f9c;
+    border-radius: 5px;
+    padding: 10px 5px;
+}
+
+.traid__title{
+    margin-bottom: 7px;
+}
+.traid__description{
+    margin-bottom: 5px;
+}
+
+.js_traid_status{
+    color:green;
+    font-weight: 600;
+    cursor: pointer;
+}
+.traid__btn{
+    display: block;
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #fae207;
+    border-radius: 8px;
+    color: #fae207;
+    background-color: #4d315a;
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+/*  добавить сделку */
+
+.comment__form{
+    display: flex;
+    flex-direction: column;
+    border: solid 2px #4d315a;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.form_title {
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4d315a;
+}
+.form_input{
+    margin-bottom: 10px;
+    width: 50vw;
+
+}
+label{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+#contact_form{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 50vw;
+}
+.add__comment_btn{
+    width: 40vw;
+    margin: 0 auto;
+}
+
+
+/* ФОРМЫ */
+
+.trade__status,
+.traid__form_info-block,
+.traid__additional{
+    position: relative;
+}
+.traid__form_status,
+.traid__dop_comment{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#form__status{
+    display: flex;
+    flex-direction: column;
+    border:solid 2px #895f9c;
+    border-radius: 5px;
+    color: #895f9c;
+    font-size: 18px;
+    line-height: 1.5rem;
+}
+.traid__form_status{
+    display: none;
+}
+
+.traid__close_ntn
+{
+    position: absolute;
+    top: -15px;
+    right: -30px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+}
+
+.traid__close_ntn::after,
+.traid__close_ntn::before{
+    position: absolute;
+    content: "";
+    top: 15px;
+    right: 0;
+    width: 30px;
+    height: 8px;
+    border-radius: 5px;
+    transform: rotate(-45deg);
+    background-color: #131313;
+}
+.traid__close_ntn::before{
+    transform: rotate(45deg);
+}
+
+/* ИНФО-БЛОК*/
+
+.traid__form_info-block{
+    width: 50%;
+    display: none;
+}
+.form__textarea{
+    border: solid 2px #895f9c;
+    border-radius: 5px;
+    padding: 4px;
+    margin-bottom: 10px;
+}
+
+/* ФОРМЫ ДОПОЛНИТЕЛЬНЫЕ КОММЕНТАРИИ*/
+
+.traid__dop_comment {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.traid__dop_comment{
+   display: none;
+}
+
+
+
+
