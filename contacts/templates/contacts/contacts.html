@@ -13,6 +13,30 @@
 {% block content %}
 <main>
     <div class="container">
+        <div class="new__contact">
+            <form method="post" class="new__contact_form">
+                <div class="add__form_close js_new__contact_close">
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="add__form_block">
+                 <label for="id_name" class="new__contact_lable">наименование</label>
+                     <input type="text" name="name" class="new__contact_input" maxlength="50" required="" id="id_name">
+                 </div>
+                 <div class="add__form_block">
+                    <label for="id_phone" class="new__contact_lable">телефон</label>
+                    <input type="text" name="phone" class="new__contact_input" maxlength="50" required="" id="id_phone">
+                 </div>
+                 <div class="add__form_block">
+                    <label for="id_mail" class="new__contact_lable">почта</label>
+                    <input type="text" name="mail" class="new__contact_input" maxlength="50" required="" id="id_mail">
+                 </div>
+                <button type="submit" class="form_btn">создать</button>
+
+
+            </form>
+
+        </div>
         <div class="menu__header">
             <ul class="menu__list row">
                 <li class="menu__item"><a href="{% url 'cabinet' %}" class="menu__link">кабинет</a></li>
