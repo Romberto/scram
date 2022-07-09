@@ -69,7 +69,11 @@
                 {% for client in clients %}
                 <tr>
                     <td class="js_name" data-title="изменить или удалить"><a href="{% url 'client' client.id %}">{{client.name}}</a></td>
-                    <td><a href="tel:{{client.phone}}">{{client.phone}}</a></td>
+                    <td>
+                        <a href="tel:{{client.phone}}"><p>{{client.phone}}</p></a>
+                        <a href="tel:{{client.phone2}}"><p>{{client.phone2}}</p></a>
+                        <a href="tel:{{client.phone3}}"><p>{{client.phone3}}</p></a>
+                    </td>
                     <td><a href="mailto:{{client.mail}}">{{client.mail}}</a></td>
                     <td class="form_adress">{{client.ur_adress}}</td>
                     <td class="form_adress">{{client.fac_adress}}</td>

@@ -26,6 +26,17 @@ class ContactsView(View):
             for i in form.cleaned_data['phone']:
                 if i == '+' or i.isdigit():
                     phone += i
+            phone2 = ''
+            if form.cleaned_data['phone2']:
+                for i in form.cleaned_data['phone2']:
+                    if i == '+' or i.isdigit():
+                        phone2 += i
+            phone3 = ''
+            if form.cleaned_data['phone3']:
+                for i in form.cleaned_data['phone3']:
+                    if i == '+' or i.isdigit():
+                        phone3 += i
+
             name = form.cleaned_data['name']
             mail = form.cleaned_data['mail']
             if not mail:
@@ -42,6 +53,8 @@ class ContactsView(View):
             new_client = ClientModel(
                 name=name,
                 phone=phone,
+                phone2=phone2,
+                phone3=phone3,
                 mail=mail,
                 ur_adress=ur_adress,
                 fac_adress=fac_adress,
@@ -84,6 +97,21 @@ class ContactItemView(View):
                 if i == '+' or i.isdigit():
                     phone += i
             client.phone = phone
+            # телефон2
+            phone2 = ''
+            if form.cleaned_data['phone2']:
+                for i in form.cleaned_data['phone2']:
+                    if i == '+' or i.isdigit():
+                        phone2 += i
+            client.phone2 = phone2
+            # телефон3
+            phone3 = ''
+            if form.cleaned_data['phone3']:
+                for i in form.cleaned_data['phone3']:
+                    if i == '+' or i.isdigit():
+                        phone3 += i
+            client.phone3 = phone3
+
             # наименование
             client.name = form.cleaned_data['name']
             # почта
@@ -114,7 +142,7 @@ class ContactItemView(View):
         return render(request, 'contacts/client.html', {'client': client,
                                                         'form': form})
 class DeleteContactView(View):
-
+    '''Удаляет контакт клиента'''
     def get(self,request, id):
         delete_client = ClientModel.objects.get(id=id)
         delete_client.delete()
