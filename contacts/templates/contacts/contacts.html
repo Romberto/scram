@@ -14,26 +14,20 @@
 <main>
     <div class="container">
         <div class="new__contact">
+
             <form method="post" class="new__contact_form">
+                {% csrf_token %}
                 <div class="add__form_close js_new__contact_close">
                     <span></span>
                     <span></span>
                 </div>
-                <div class="add__form_block">
-                 <label for="id_name" class="new__contact_lable">наименование</label>
-                     <input type="text" name="name" class="new__contact_input" maxlength="50" required="" id="id_name">
-                 </div>
-                 <div class="add__form_block">
-                    <label for="id_phone" class="new__contact_lable">телефон</label>
-                    <input type="text" name="phone" class="new__contact_input" maxlength="50" required="" id="id_phone">
-                 </div>
-                 <div class="add__form_block">
-                    <label for="id_mail" class="new__contact_lable">почта</label>
-                    <input type="text" name="mail" class="new__contact_input" maxlength="50" required="" id="id_mail">
-                 </div>
-                <button type="submit" class="form_btn">создать</button>
-
-
+                {% for field in client_form %}
+                    <div class="add__form_block">
+                        {{ field.errors }}
+                        {{ field.label_tag }} {{ field }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="form_btn" id="js_contact_btn">создать</button>
             </form>
 
         </div>
@@ -49,6 +43,19 @@
         </div>
         <h3 class="title__contact">клиенты</h3>
         <div class="contact__table">
+            {% if client_form.errors %}
+             <div class="form_errors">
+                <div class="form_errors_inner">
+                    <div class="form_errors_close_btn">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p>ошибка</p>
+                    <p>сохранение не возможно</p>
+                </div>
+            </div>
+            {% endif %}
+
             <table border="1">
                 <tr>
                     <td bgcolor="#D3EDF6" align="center">наименоваие</td>
@@ -61,13 +68,13 @@
                 </tr>
                 {% for client in clients %}
                 <tr>
-                    <td>{{client.name}}</td>
+                    <td class="js_name" data-title="изменить или удалить"><a href="{% url 'client' client.id %}">{{client.name}}</a></td>
                     <td><a href="tel:{{client.phone}}">{{client.phone}}</a></td>
                     <td><a href="mailto:{{client.mail}}">{{client.mail}}</a></td>
-                    <td>{{client.ur_adress}}</td>
-                    <td>{{client.fac_adress}}</td>
+                    <td class="form_adress">{{client.ur_adress}}</td>
+                    <td class="form_adress">{{client.fac_adress}}</td>
                     <td>{{client.contact_face}}</td>
-                    <td>{{client.comment}}</td>
+                    <td class="form_comment">{{client.comment}}</td>
                 </tr>
                 {% endfor %}
 
@@ -75,6 +82,9 @@
         </div>
     </div>
 </main>
- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'contacts/js/inputmask.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'contacts/js/just-validate.min.js'%}"></script>
 <script type="text/javascript" src="{% static 'contacts/js/contacts.js'%}"></script>
+<script type="text/javascript" src="{% static 'contacts/js/valid.js'%}"></script>
 {%endblock%}

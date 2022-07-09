@@ -1,0 +1,59 @@
+{% extends 'product/base.html' %}
+{% load static %}
+{% block css%}
+<link rel="stylesheet" href="{% static 'product/css/normilize.css'%}">
+<link rel="stylesheet" href="{% static 'product/css/products.css'%}">
+<link rel="stylesheet" href="{% static 'product/css/lk_total.css'%}">
+<link rel="stylesheet" href="{% static 'product/css/traid.css'%}">
+<link rel="stylesheet" href="{% static './contacts/css/contacts.css'%}">
+{% endblock %}
+
+{% block title %}{{client.name}}{% endblock %}
+
+{% block content %}
+<main>
+
+    <div class="container">
+        <div class="popup_inner">
+            <div class="popup_del_client">
+                <h3 class="popup__title">удаление</h3>
+                <p class="popup__comment">Удалить контакт {{client.name}} ?</p>
+                <div class="popup__block_btn">
+                    <div class="popup_del_btn grenn" style="padding-top:0;"><a href="{% url 'del_client' client.id %}" class="add__form_link" >да</a></div>
+                    <div class="popup_del_btn red js_no">нет</div>
+                </div>
+            </div>
+        </div>
+         <div class="menu__header">
+            <ul class="menu__list row">
+                <li class="menu__item"><a href="{% url 'cabinet' %}" class="menu__link">кабинет</a></li>
+                <li class="menu__item"><a href="traders.html" class="menu__link">сделки</a></li>
+                <li class="menu__item"><a href="{% url 'contacts'%}" class="menu__link">клиенты</a></li>
+                <li class="menu__item"><a href="{% url 'product'%}" class="menu__link">документы</a></li>
+
+                <li class="menu__item"><a href="#" class="menu__link js_del_client" style="color: red">УДАЛИТЬ КОНТАКТ</a></li>
+            </ul>
+         </div>
+        <h3 class="title__contact">{{client.name}}</h3>
+        <form method="post" class="new__contact_form" style="display:block; top:100px;">
+            {% csrf_token %}
+            <div class="add__form_close js_new__contact_close">
+                <span></span>
+                <span></span>
+            </div>
+            {% for field in form %}
+                <div class="add__form_block">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="form_btn" id="js_contact_btn">ИЗМЕНИТЬ</button>
+        </form>
+    </div>
+</main>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'contacts/js/inputmask.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'contacts/js/just-validate.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'contacts/js/contacts.js'%}"></script>
+<script type="text/javascript" src="{% static 'contacts/js/valid.js'%}"></script>
+{% endblock %}
