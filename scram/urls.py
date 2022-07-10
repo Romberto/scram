@@ -5,6 +5,7 @@ from django.urls import include, path
 from django.conf import settings
 
 urlpatterns = [
+    path('search/', include('search.urls')),
     path('contacts/', include('contacts.urls')),
     path('cabinet/', include('cabinet.urls')),
     path('product/', include('product.urls')),

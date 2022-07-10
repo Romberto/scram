@@ -252,3 +252,66 @@ td{
     background-color: #4d315a;
     color: #fae207;
 }
+.link__block{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width:246px;
+}
+
+.link__link{
+    display:block;
+    padding: 10px 30px;
+    border: solid 2px #fae207;
+    background-color: #4d315a;
+    border-radius: 5px;
+    max-width: 200px;
+    color:#fae207;
+    font-family:Arial, sans-serif;
+    font-width: 600;
+    font-size: 20px;
+    text-align: center;
+    width:200px;
+}
+.link__item + .link__item{
+    margin-top: 5px;
+}
+
+.popup_search_btn{
+    position:absolute;
+    top: 5px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+    background-color: #131313;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.popup_search_btn::after,
+.popup_search_btn::before{
+    position: absolute;
+    content:"";
+    top:22px;
+    right:0px;
+    width:50px;
+    height:5px;
+    background-color: #fff;
+    transform: rotate(45deg);
+    border-radius:3px;
+}
+
+.popup_search_btn::before{
+    transform: rotate(-45deg);
+}
+.search_orgaiz{
+   display: none;
+}
+
+.search_tel{
+    display: none;
+}
+.search_contact_face{
+   display: none;
+}

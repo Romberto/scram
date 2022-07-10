@@ -147,3 +147,5 @@ class DeleteContactView(View):
         delete_client = ClientModel.objects.get(id=id)
         delete_client.delete()
         return redirect(to='/contacts')
+
+

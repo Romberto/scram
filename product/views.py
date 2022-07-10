@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import  ProductModel, DocumentProductModel, GroupProductModel
+from .models import ProductModel, DocumentProductModel, GroupProductModel
 from django.views import View
 from .forms import *
 import os
-
 
 
 class ListProductView(View):
@@ -42,7 +41,6 @@ class ProductGroupView(View):
                 new_product.save()
 
         return render(request, 'product/group.html', {'group': gruop, 'query': query, 'add_form': add_form})
-
 
 
 class ProductItemView(View):

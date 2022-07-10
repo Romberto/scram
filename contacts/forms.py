@@ -36,9 +36,10 @@ class ClientForm(forms.ModelForm):
         phone = cleaned_data.get("phone")
         phone2 = cleaned_data.get('phone2')
         phone3 = cleaned_data.get('phone3')
-        if len(phone) != 17:
-            msg = "не корректный номер телефона"
-            self.add_error('phone', msg)
+        if phone:
+            if len(phone) != 17:
+                msg = "не корректный номер телефона"
+                self.add_error('phone', msg)
         if phone2:
             if len(phone2) != 17:
                 msg = "не корректный номер телефона"

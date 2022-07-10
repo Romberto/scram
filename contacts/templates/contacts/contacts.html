@@ -13,8 +13,49 @@
 {% block content %}
 <main>
     <div class="container">
-        <div class="new__contact">
+        <div class="popup_inner">
+            <div class="popup_del_client" style="z-index: 15;">
+                <div class="popup_search_btn">
 
+                </div>
+                <h3 class="popup__title">Поиск контактов</h3>
+                <ul class="link__block">
+                    <li class="link__item"><a href="{% url 'searchAll' %}" class="link__link">все</a></li>
+                    <li class="link__item"><a href="#" class="link__link js_org">по организации</a></li>
+                    <li class="link__item"><a href="#" class="link__link js_tel">по номеру телефона</a></li>
+                    <li class="link__item"><a href="#" class="link__link js_face">по контактному лицу</a></li>
+                    <li class="link__item"><a href="#" class="link__link">по ИНН</a></li>
+                </ul>
+                <div class="search_orgaiz">
+                    <h3 class="popup__title">по организациям</h3>
+                    <form action="{% url 'search_org'  %}" method="get">
+                        <label>
+                            <input name="search" type="text" placeholder="организация...">
+                        </label>
+                        <input type="submit" value="поиск">
+                    </form>
+                </div>
+                <div class="search_tel">
+                    <h3 class="popup__title">по телефону</h3>
+                    <form action="{% url 'search_tel'  %}" method="get">
+                        <label>
+                            <input name="search" type="text" placeholder="телефон..." id="search_tel">
+                        </label>
+                        <input type="submit" value="поиск">
+                    </form>
+                </div>
+                <div class="search_contact_face">
+                    <h3 class="popup__title">по контактному лицу</h3>
+                    <form action="{% url 'search_face'  %}" method="get">
+                        <label>
+                            <input name="search" type="text" placeholder="имя человека...">
+                        </label>
+                        <input type="submit" value="поиск">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="new__contact">
             <form method="post" class="new__contact_form">
                 {% csrf_token %}
                 <div class="add__form_close js_new__contact_close">
@@ -37,7 +78,7 @@
                 <li class="menu__item"><a href="{% url 'contacts'%}" class="menu__link">задачи</a></li>
                 <li class="menu__item"><a href="traders.html" class="menu__link">сделки</a></li>
                 <li class="menu__item"><a href="{% url 'product'%}" class="menu__link">документы</a></li>
-                <li class="menu__item"><a href="tasks.html" class="menu__link">поиск</a></li>
+                <li class="menu__item"><a href="#" class="menu__link js_contact_search">поиск</a></li>
                 <li class="menu__item"><a href="#" class="menu__link js_new_client">новый клиент</a></li>
             </ul>
         </div>
@@ -55,7 +96,7 @@
                 </div>
             </div>
             {% endif %}
-
+            {% if clients %}
             <table border="1">
                 <tr>
                     <td bgcolor="#D3EDF6" align="center">наименоваие</td>
@@ -66,6 +107,7 @@
                     <td bgcolor="#D3EDF6" align="center">контактное лицо</td>
                     <td bgcolor="#D3EDF6" align="center">комментарий</td>
                 </tr>
+
                 {% for client in clients %}
                 <tr>
                     <td class="js_name" data-title="изменить или удалить"><a href="{% url 'client' client.id %}">{{client.name}}</a></td>
@@ -81,6 +123,9 @@
                     <td class="form_comment">{{client.comment}}</td>
                 </tr>
                 {% endfor %}
+                {% else %}
+                <p>{{message}}</p>
+                {% endif%}
 
             </table>
         </div>

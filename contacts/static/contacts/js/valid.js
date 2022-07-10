@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     var im = new Inputmask("+7(999)-999-99-99");
     im.mask(selector3);
 
+    var selector3 = $('#search_tel')
+    var im = new Inputmask("+7(999)-999-99-99");
+    im.mask(selector3);
+
 
     new JustValidate(".new__contact_form", {
     rules: {
