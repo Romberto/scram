@@ -5,7 +5,7 @@ from .models import ClientModel
 class ClientForm(forms.ModelForm):
     class Meta:
         model = ClientModel
-        fields = ['name', 'phone', 'phone2', 'phone3','mail', 'ur_adress',
+        fields = ['name', 'phone', 'phone2', 'phone3','mail','inn', 'ur_adress',
                   'fac_adress', 'contact_face', 'comment']
 
 
@@ -21,6 +21,8 @@ class ClientForm(forms.ModelForm):
         self.fields['phone3'].widget.attrs['class'] = 'add__form_input'
         self.fields['mail'].label = "почта"
         self.fields['mail'].widget.attrs['class'] = 'add__form_input'
+        self.fields['inn'].label = "ИНН"
+        self.fields['inn'].widget.attrs['class'] = 'add__form_input'
         self.fields['ur_adress'].label = "юр адрес"
         self.fields['ur_adress'].widget.attrs['class'] = 'add__form_input'
         self.fields['fac_adress'].label = "факт адрес"
@@ -36,6 +38,7 @@ class ClientForm(forms.ModelForm):
         phone = cleaned_data.get("phone")
         phone2 = cleaned_data.get('phone2')
         phone3 = cleaned_data.get('phone3')
+        inn = cleaned_data.get('inn')
         if phone:
             if len(phone) != 17:
                 msg = "не корректный номер телефона"
@@ -48,4 +51,7 @@ class ClientForm(forms.ModelForm):
             if len(phone3) != 17:
                 msg = "не корректный номер телефона"
                 self.add_error('phone', msg)
-
+        if inn:
+            if len(inn) != 12:
+                msg = "не коректный ИНН"
+                self.add_error('inn', msg)

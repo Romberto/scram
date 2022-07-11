@@ -36,18 +36,18 @@ class ContactsView(View):
                 for i in form.cleaned_data['phone3']:
                     if i == '+' or i.isdigit():
                         phone3 += i
-
+            inn = form.cleaned_data['inn']
             name = form.cleaned_data['name']
             mail = form.cleaned_data['mail']
             if not mail:
-                mail = 'Н/Д'
+                mail = None
             ur_adress = form.cleaned_data['ur_adress']
             if not ur_adress:
-                ur_adress = 'Н/Д'
+                ur_adress = ''
 
             fac_adress = form.cleaned_data['fac_adress']
             if not fac_adress:
-                fac_adress = 'Н/Д'
+                fac_adress = ''
             contact_face = form.cleaned_data['contact_face']
             comment = form.cleaned_data['comment']
             new_client = ClientModel(
@@ -56,6 +56,7 @@ class ContactsView(View):
                 phone2=phone2,
                 phone3=phone3,
                 mail=mail,
+                inn=inn,
                 ur_adress=ur_adress,
                 fac_adress=fac_adress,
                 contact_face=contact_face,
@@ -111,25 +112,24 @@ class ContactItemView(View):
                     if i == '+' or i.isdigit():
                         phone3 += i
             client.phone3 = phone3
-
+            # инн
+            client.inn = form.cleaned_data['inn']
             # наименование
             client.name = form.cleaned_data['name']
             # почта
+
+
             mail = form.cleaned_data['mail']
-            if not mail:
-                client.mail = 'Н/Д'
-            else:
-                client.mail = mail
             # юридический адрес
             ur_adress = form.cleaned_data['ur_adress']
             if not ur_adress:
-                client.ur_adress = 'Н/Д'
+                client.ur_adress = ''
             else:
                 client.ur_adress = ur_adress
             # фактический адрес
             fac_adress = form.cleaned_data['fac_adress']
             if not fac_adress:
-                client.fac_adress = 'Н/Д'
+                client.fac_adress = ''
             else:
                 client.fac_adress = fac_adress
             # контактное лицо

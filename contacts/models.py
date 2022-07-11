@@ -13,6 +13,7 @@ class ClientModel(models.Model):
     fac_adress = models.CharField(max_length=200, null=True, blank=True)
     contact_face = models.CharField(max_length=120)
     comment = models.TextField(null=True, blank=True)
+    inn = models.CharField(max_length=12 ,blank=True, null=True)
 
     class Meta:
         verbose_name = "контакт"
