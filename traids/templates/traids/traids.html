@@ -1,0 +1,34 @@
+{% extends 'search/base.html' %}
+{% load static %}
+{% block css%}
+<link rel="stylesheet" href="{% static 'product/css/normilize.css'%}">
+<link rel="stylesheet" href="{% static 'product/css/products.css'%}">
+<link rel="stylesheet" href="{% static 'product/css/lk_total.css'%}">
+<link rel="stylesheet" href="{% static 'product/css/traid.css'%}">
+<link rel="stylesheet" href="{% static 'contacts/css/contacts.css'%}">
+
+
+
+{% endblock %}
+
+{% block title %}контакты{% endblock %}
+{% block content %}
+<main>
+   <div class="container">
+      <div class="menu__header">
+            <ul class="menu__list row">
+                <li class="menu__item"><a href="{% url 'cabinet' %}" class="menu__link">кабинет</a></li>
+                <li class="menu__item"><a href="{% url 'contacts'%}" class="menu__link">клиенты</a></li>
+                <li class="menu__item"><a href="{% url 'contacts'%}" class="menu__link">напомнить</a></li>
+                <li class="menu__item"><a href="{% url 'traids' %}" class="menu__link">сделки</a></li>
+                <li class="menu__item"><a href="{% url 'product'%}" class="menu__link">документы</a></li>
+                <li class="menu__item"><a href="#" class="menu__link js_traids_search">поиск</a></li>
+                <li class="menu__item"><a href="#" class="menu__link js_new_traids">новая сделка</a></li>
+            </ul>
+        </div>
+      <h3 class="form_title">сделки</h3>
+   </div>
+
+</main>
+
+{% endblock %}

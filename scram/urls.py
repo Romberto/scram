@@ -5,6 +5,7 @@ from django.urls import include, path
 from django.conf import settings
 
 urlpatterns = [
+    path('traids/', include('traids.urls')),
     path('search/', include('search.urls')),
     path('contacts/', include('contacts.urls')),
     path('cabinet/', include('cabinet.urls')),

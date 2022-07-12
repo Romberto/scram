@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'product',
     'cabinet',
     'contacts',
-    'search'
+    'search',
+    'traids',
+    'auth_user'
 
 ]
 
