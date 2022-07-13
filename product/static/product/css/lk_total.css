@@ -44,4 +44,13 @@
 .header{
     color: #fae207;
 }
+.user_name{
+    text-transform: uppercase;
+    color: #fae207;
+    font-weight: 600;
+}
 
+.user_name:hover{
+    color: red;
+    text-decoration: revert;
+}

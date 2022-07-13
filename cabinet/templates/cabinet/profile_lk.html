@@ -1,0 +1,15 @@
+{% extends 'product/base.html' %}
+{% load static %}
+{% block css%}
+    <link rel="stylesheet" href="{% static 'product/css/normilize.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/lk_segun.css'%}">
+    <link rel="stylesheet" href="{% static 'product/css/lk_total.css'%}">
+
+{% endblock %}
+{% block title%}Профиль {{user.username}}{% endblock%}
+
+{% block content%}
+{{ form_user.username}}
+{{ form_profile.as_p}}
+
+{% endblock %}

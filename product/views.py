@@ -1,14 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ProductModel, DocumentProductModel, GroupProductModel
 from django.views import View
 from .forms import *
 import os
+from auth_user.views import auth_decoration
 
 
 class ListProductView(View):
     """отображает все группы товаров"""
 
+    @auth_decoration
     def get(self, request):
         list_product = GroupProductModel.objects.all()
         return render(request, 'product/documents.html', {'list_product': list_product})
@@ -17,12 +19,15 @@ class ListProductView(View):
 class ProductGroupView(View):
     """ отображает продукты определённой группы"""
 
-    def get(self, request, id_el):
-        gruop = GroupProductModel.objects.get(id=id_el)
-        query = ProductModel.objects.filter(product_group=gruop)
-        add_form = AddProductForm()
-        return render(request, 'product/group.html', {'group': gruop, 'query': query, 'add_form': add_form})
 
+    def get(self, request, id_el):
+        if request.user.is_authenticated:
+            gruop = GroupProductModel.objects.get(id=id_el)
+            query = ProductModel.objects.filter(product_group=gruop)
+            add_form = AddProductForm()
+            return render(request, 'product/group.html', {'group': gruop, 'query': query, 'add_form': add_form})
+        else:
+            return redirect('/')
     def post(self, request, id_el):
         gruop = GroupProductModel.objects.get(id=id_el)
         query = ProductModel.objects.filter(product_group=gruop)
@@ -46,6 +51,7 @@ class ProductGroupView(View):
 class ProductItemView(View):
     """отображает перечень документов конкретного товара """
 
+    @auth_decoration
     def get(self, request, article):
         itemProduct = ProductModel.objects.get(article=article)
         try:

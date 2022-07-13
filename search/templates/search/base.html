@@ -23,8 +23,8 @@
                 </a>
                 <div class="datetime">22.03.2022</div>
                 <div class="user_block">
-                    <p class="user_name">Стрельников Константин</p>
-                    <a href="#" class="btn_exit">выход</a>
+                    <a href="#" class="user_name js_user">{{user.username}}</a>
+                    <a href="{% url 'logOut'%}" class="btn_exit">выход</a>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
+
     {% block css %}
     <link rel="stylesheet" href="{% static 'product/css/normilize.css'%}">
     <link rel="stylesheet" href="{% static 'product/css/products.css'%}">
@@ -26,8 +26,8 @@
                 </a>
                 <div class="datetime">22.03.2022</div>
                 <div class="user_block">
-                    <p class="user_name">Стрельников Константин</p>
-                    <a href="#" class="btn_exit">выход</a>
+                    <a href="{% url 'profile_lk' user.id %}" class="user_name ">{{user.username}}</a>
+                    <a href="{% url 'logOut' %}" class="btn_exit">выход</a>
                 </div>
             </div>
         </div>

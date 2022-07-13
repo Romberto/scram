@@ -4,11 +4,12 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .models import ClientModel
 from .forms import ClientForm
+from auth_user.views import auth_decoration
 
 
 class ContactsView(View):
     """отоюражает последние пять контактов"""
-
+    @auth_decoration
     def get(self, request):
         clients = ClientModel.objects.order_by('-id')[:5]
         client_form = ClientForm()
@@ -76,6 +77,7 @@ class ContactsView(View):
 class ContactItemView(View):
     """отображает отдельный контакт с целью изменения данных"""
 
+    @auth_decoration
     def get(self, request, id):
         client = ClientModel.objects.get(id=id)
         form = ClientForm(instance=client)
@@ -143,6 +145,8 @@ class ContactItemView(View):
                                                         'form': form})
 class DeleteContactView(View):
     '''Удаляет контакт клиента'''
+
+    @auth_decoration
     def get(self,request, id):
         delete_client = ClientModel.objects.get(id=id)
         delete_client.delete()

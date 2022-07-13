@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views import View
+
+from auth_user.views import auth_decoration
 from contacts.models import ClientModel
 from contacts.forms import ClientForm
 
@@ -7,6 +9,7 @@ from contacts.forms import ClientForm
 class SearchContAllView(View):
     """ Все контакты """
 
+    @auth_decoration
     def get(self, request):
         clients = ClientModel.objects.all().order_by('-id')
         client_form = ClientForm()
@@ -18,6 +21,7 @@ class SearchContAllView(View):
 class SearchOrg(View):
     """ поиск по оранизациям"""
 
+    @auth_decoration
     def get(self, request):
         search = request.GET.get('search')
         query = ClientModel.objects.filter(name__icontains=search)
@@ -28,6 +32,7 @@ class SearchOrg(View):
 class SearchTel(View):
     """ поиск по номеру телефона"""
 
+    @auth_decoration
     def get(self, request):
         search = request.GET.get('search')
         clean_search = ''
@@ -56,6 +61,7 @@ class SearchTel(View):
 class SearchFace(View):
     """поиск по контактному лицу """
 
+    @auth_decoration
     def get(self, request):
         search = request.GET.get('search')
         query = ClientModel.objects.filter(contact_face__icontains=search)
