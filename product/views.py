@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ProductModel, DocumentProductModel, GroupProductModel
@@ -12,8 +14,10 @@ class ListProductView(View):
 
     @auth_decoration
     def get(self, request):
+        today = datetime.datetime.today()
         list_product = GroupProductModel.objects.all()
-        return render(request, 'product/documents.html', {'list_product': list_product})
+        return render(request, 'product/documents.html', {'list_product': list_product,
+                                                          'today': today})
 
 
 class ProductGroupView(View):
@@ -22,10 +26,14 @@ class ProductGroupView(View):
 
     def get(self, request, id_el):
         if request.user.is_authenticated:
+            today = datetime.datetime.today()
             gruop = GroupProductModel.objects.get(id=id_el)
             query = ProductModel.objects.filter(product_group=gruop)
             add_form = AddProductForm()
-            return render(request, 'product/group.html', {'group': gruop, 'query': query, 'add_form': add_form})
+            return render(request, 'product/group.html', {'group': gruop,
+                                                          'query': query,
+                                                          'add_form': add_form,
+                                                          'today': today})
         else:
             return redirect('/')
     def post(self, request, id_el):
@@ -53,6 +61,7 @@ class ProductItemView(View):
 
     @auth_decoration
     def get(self, request, article):
+        today = datetime.datetime.today()
         itemProduct = ProductModel.objects.get(article=article)
         try:
             documents = DocumentProductModel.objects.get(article_pro=itemProduct.id)
@@ -67,7 +76,8 @@ class ProductItemView(View):
                                                              'dec_form': dec_form,
                                                              'pro_form': pro_form,
                                                              'spe_form': spe_form,
-                                                             'qua_form': qua_form
+                                                             'qua_form': qua_form,
+                                                             'today': today
                                                              })
 
     def post(self, request, article):

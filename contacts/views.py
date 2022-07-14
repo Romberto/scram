@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -13,9 +15,10 @@ class ContactsView(View):
     def get(self, request):
         clients = ClientModel.objects.order_by('-id')[:5]
         client_form = ClientForm()
-
+        today = datetime.datetime.today()
         return render(request, 'contacts/contacts.html', {'clients': clients,
-                                                          'client_form': client_form})
+                                                          'client_form': client_form,
+                                                          'today': today})
 
     """ добавление нового клиента"""
 
@@ -79,11 +82,13 @@ class ContactItemView(View):
 
     @auth_decoration
     def get(self, request, id):
+        today = datetime.datetime.today()
         client = ClientModel.objects.get(id=id)
         form = ClientForm(instance=client)
         data = {
             'client': client,
-            'form': form
+            'form': form,
+            'today': today
         }
         return render(request, 'contacts/client.html', data)
 

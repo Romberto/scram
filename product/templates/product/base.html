@@ -24,7 +24,7 @@
                 <a href="#" class="logo_link">
                     <img  class="logo_img" src="{% static 'product/img/scrum_logo.png' %}" alt="logo">
                 </a>
-                <div class="datetime">22.03.2022</div>
+                <div class="datetime">{{ today }}</div>
                 <div class="user_block">
                     <a href="{% url 'profile_lk' user.id %}" class="user_name ">{{user.username}}</a>
                     <a href="{% url 'logOut' %}" class="btn_exit">выход</a>

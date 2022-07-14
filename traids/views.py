@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -11,4 +13,8 @@ class TraidsView(View):
 
     @auth_decoration
     def get(self, request):
-        return render(request, 'traids/traids.html')
+        today = datetime.datetime.today()
+        return render(request, 'traids/traids.html',
+                      {
+                          'today': today
+                      })
